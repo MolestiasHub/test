@@ -23,16 +23,20 @@ function App () {
       .then (response => setMerch(response.data));}
   }
 
+  () => {Axios.get("http://localhost:8080/merchandise")
+  .then (response => setMerch(response.data))}
+
+  () => {Axios.get("http://localhost:8080/categories/")
+  .then (response => setResp(response.data))}
+
     return (
       <Router>
         <main>
             <h1 style = {{color : "white"}}>Ello</h1>
             <Categories 
-              items={Axios.get("http://localhost:8080/categories/")
-                .then (response => setResp(response.data))} 
+              items={resp} 
               onChange={onChange}/>
-            <Merch items={Axios.get("http://localhost:8080/merchandise")
-              .then (response => setMerch(response.data))}/>
+            <Merch items={merch}/>
         </main>
       </Router>
     )
