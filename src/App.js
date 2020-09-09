@@ -27,13 +27,10 @@ function App () {
   }
 
   useEffect(() => {
-    if (categories == "all"){
-      Axios.get("http://localhost:8080/merchandise",{params: {search: filter}})
-      .then (response => setMerch(response.data));
-    }else{  
-      Axios.get("http://localhost:8080/merchandise/",{params: {categories: categories, search: filter}})
+      const result = categories ? categories : undefined;
+      Axios.get("http://localhost:8080/merchandise/",{params: {categories: result, search: filter}})
       .then (response => setMerch(response.data));}
-  },[categories, filter])
+  ,[categories, filter])
 
   useEffect(() => {Axios.get("http://localhost:8080/merchandise")
   .then (response => setMerch(response.data))},[])
