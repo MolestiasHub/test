@@ -1,5 +1,6 @@
 import {React,
-  useState
+  useState,
+  useEffect
 }from "react";
 import './App.css';
 import Categories from "./categories.js";
@@ -23,12 +24,11 @@ function App () {
       .then (response => setMerch(response.data));}
   }
 
-  () => {Axios.get("http://localhost:8080/merchandise")
-  .then (response => setMerch(response.data))}
+  useEffect(() => {Axios.get("http://localhost:8080/merchandise")
+  .then (response => setMerch(response.data))},[])
 
-  () => {Axios.get("http://localhost:8080/categories/")
-  .then (response => setResp(response.data))}
-
+  useEffect(() => {Axios.get("http://localhost:8080/categories/")
+  .then (response => setResp(response.data))},[])
     return (
       <Router>
         <main>
