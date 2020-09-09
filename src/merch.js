@@ -1,4 +1,4 @@
-import {React}from "react";
+import React from "react";
 import { Link } from "react-router-dom"
 const roots = "http://localhost:8080/merchandise/"
 

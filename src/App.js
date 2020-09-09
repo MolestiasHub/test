@@ -1,5 +1,5 @@
-import {React,
-  useState,
+import React,
+{ useState,
   useEffect
 }from "react";
 import './App.css';
@@ -14,15 +14,20 @@ const history = createBrowserHistory();
 function App () {
   const [resp, setResp] = useState([]);
   const [merch, setMerch] = useState([]);
+  const [categories, setCats] = useState("all");
 
   const onChange = (id) => {
-    if (id == "all"){
+    setCats(id);
+  }
+
+  useEffect(() => {
+    if (categories == "all"){
       Axios.get("http://localhost:8080/merchandise")
       .then (response => setMerch(response.data));
     }else{  
-      Axios.get("http://localhost:8080/merchandise/?category="+id)
+      Axios.get("http://localhost:8080/merchandise/?category="+categories)
       .then (response => setMerch(response.data));}
-  }
+  },[categories])
 
   useEffect(() => {Axios.get("http://localhost:8080/merchandise")
   .then (response => setMerch(response.data))},[])
@@ -30,7 +35,7 @@ function App () {
   useEffect(() => {Axios.get("http://localhost:8080/categories/")
   .then (response => setResp(response.data))},[])
     return (
-      <Router>
+      <Router history={history}>
         <main>
             <h1 style = {{color : "white"}}>Ello</h1>
             <Categories 
