@@ -27,8 +27,7 @@ function App () {
   }
 
   useEffect(() => {
-      const result = categories ? categories : undefined;
-      Axios.get("http://localhost:8080/merchandise/",{params: {categories: result, search: filter}})
+      Axios.get("http://localhost:8080/merchandise/",{params: {category: categories==="all" ? undefined : categories, search: filter}})
       .then (response => setMerch(response.data));}
   ,[categories, filter])
 
