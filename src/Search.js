@@ -5,11 +5,11 @@ import React,
 import Axios from "axios";
 
 function SearchBar (props) {
-    let a = "";
+    const [temp, setTemp] = useState("");
     return (
         <div>
-            <input onChange={(e)=>a=e.target.value}></input>
-            <input type="submit" onClick={()=>props.func(a)}></input>
+            <input onChange={(e)=>setTemp(e.target.value)} value={temp}></input>
+            <input type="submit" onClick={()=>props.func(temp)}></input>
         </div>
     )
 }
