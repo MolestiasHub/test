@@ -25,23 +25,15 @@ function App () {
   const onChangeSearch = (id) => {
      setFilter(id);
   }
-  useEffect (() => {
-    Axios.get("http://localhost:8080/merchandise")
-      .then (response => setMerch(response.data.map((temp) => {
-        if (temp.name.indexOf(filter)>=0){
-          return temp;
-        }
-      })));
-  },[filter])
 
   useEffect(() => {
     if (categories == "all"){
-      Axios.get("http://localhost:8080/merchandise")
+      Axios.get("http://localhost:8080/merchandise",{params: {search: filter}})
       .then (response => setMerch(response.data));
     }else{  
-      Axios.get("http://localhost:8080/merchandise/",{params: {categories: categories}})
+      Axios.get("http://localhost:8080/merchandise/",{params: {categories: categories, search: filter}})
       .then (response => setMerch(response.data));}
-  },[categories])
+  },[categories, filter])
 
   useEffect(() => {Axios.get("http://localhost:8080/merchandise")
   .then (response => setMerch(response.data))},[])
