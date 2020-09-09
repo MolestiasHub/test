@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import {React,
+  useState
+}from "react";
 import './App.css';
+import Categories from "./categories.js";
+import Merch from "./merch.js";
+import { Router } from "react-router-dom"
+import { createBrowserHistory } from "history";
+import Axios from "axios"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const history = createBrowserHistory();
+
+function App () {
+  const [resp, setResp] = useState([]);
+  const [merch, setMerch] = useState([]);
+
+  const onChange = (id) => {
+    if (id == "all"){
+      Axios.get("http://localhost:8080/merchandise")
+      .then (response => setMerch(response.data));
+    }else{  
+      Axios.get("http://localhost:8080/merchandise/?category="+id)
+      .then (response => setMerch(response.data));}
+  }
+
+    return (
+      <Router>
+        <main>
+            <h1 style = {{color : "white"}}>Ello</h1>
+            <Categories 
+              items={Axios.get("http://localhost:8080/categories/")
+                .then (response => setResp(response.data))} 
+              onChange={onChange}/>
+            <Merch items={Axios.get("http://localhost:8080/merchandise")
+              .then (response => setMerch(response.data))}/>
+        </main>
+      </Router>
+    )
 }
 
 export default App;
