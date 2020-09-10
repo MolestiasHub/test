@@ -7,7 +7,7 @@ import Axios from "axios";
 function SearchBar (props) {
     const [temp, setTemp] = useState("");
     return (
-        <div>
+        <div style={{marginRight : "15px"}}>
             <input onChange={(e)=>{
                 if (e.target.value == null){
                     setTemp("")

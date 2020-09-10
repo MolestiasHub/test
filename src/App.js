@@ -20,6 +20,7 @@ function App () {
 
   const onChange = (id) => {
     setCats(id);
+    setFilter("")
   }
 
   const onChangeSearch = (id) => {
@@ -39,11 +40,13 @@ function App () {
     return (
       <Router history={history}>
         <main>
-            <SearchBar func={onChangeSearch}/>
-            <h1 style = {{color : "white"}}>Ello</h1>
-            <Categories 
-              items={resp} 
-              onChange={onChange}/>
+            <div className="flex">
+              <h1 style = {{color : "white", margin : "10px"}} >Ello</h1>
+              <Categories 
+                items={resp} 
+                onChange={onChange}/>
+              <SearchBar func={onChangeSearch}/>
+            </div> 
             <Merch items={merch}/>
         </main>
       </Router>

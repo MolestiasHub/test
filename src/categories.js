@@ -8,7 +8,7 @@ import Axios from "axios";
 function Categories (props) {
 
     return (
-        <ul style = {{color: "white", listStyleType: "none", fontSize: "20px"}} className = "b">
+        <ul style = {{color: "white", listStyleType: "none", fontSize: "20px"}} className = "flexcat">
           <li onClick={() => {props.onChange("all")}}>all</li>
           {props.items.map(item => <li 
                 key={item.id} 

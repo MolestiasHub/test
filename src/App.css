@@ -2,6 +2,61 @@
   text-align: center;
 }
 
+.flex {
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 0%, rgba(74,73,73,1) 0%, rgba(0,0,0,0.9346113445378151) 90%, rgba(74,73,73,0.5256477591036415) 95%, rgba(255,255,255,0) 100%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  color: black;
+  background-color: white;
+  height: 500px;
+  width: 250px;
+  text-align: center;
+}
+
+.merch {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  justify-content: space-around;
+  position: absolute;
+  padding: 0;
+}
+
+.merch a {
+  font-size: 30px;
+  color: Black;
+  text-decoration: none;
+}
+
+.merch li {
+  padding-left: 15px;
+}
+
+.flexcat {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.flexcat li {
+  padding-left: 15px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
