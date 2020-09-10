@@ -16,7 +16,10 @@ function SearchBar (props) {
                 }
             }} 
             value={temp}></input>
-            <input type="submit" onClick={()=>props.func(temp)}></input>
+            <input type="submit" onClick={()=>{
+                props.func(temp);
+                setTemp("");
+                }}></input>
         </div>
     )
 }

@@ -32,9 +32,6 @@ function App () {
       .then (response => setMerch(response.data));}
   ,[categories, filter])
 
-  useEffect(() => {Axios.get("http://localhost:8080/merchandise")
-  .then (response => setMerch(response.data))},[])
-
   useEffect(() => {Axios.get("http://localhost:8080/categories/")
   .then (response => setResp(response.data))},[])
     return (
