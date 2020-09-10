@@ -5,21 +5,26 @@ import React,
 import Axios from "axios";
 
 function SearchBar (props) {
-    const [temp, setTemp] = useState("");
     return (
         <div style={{marginRight : "15px"}}>
             <input onChange={(e)=>{
                 if (e.target.value == null){
-                    setTemp("")
+                    props.setTemp("")
                 }else{
-                    setTemp(e.target.value)
+                    props.setTemp(e.target.value)
                 }
             }} 
-            value={temp}></input>
+            value={props.value}></input>
             <input type="submit" onClick={()=>{
-                props.func(temp);
-                setTemp("");
-                }}></input>
+                props.func(props.value);
+                props.setTemp("");
+                }}>  
+            </input>
+            <button onClick={() => {
+                props.setCats("");
+                props.setTemp("");
+                props.setFilter("")
+                }}>Reset</button>
         </div>
     )
 }

@@ -17,7 +17,7 @@ function App () {
   const [merch, setMerch] = useState([]);
   const [categories, setCats] = useState("all");
   const [filter, setFilter] = useState("");
-
+  const [temp, setTemp] = useState("");
   const onChange = (id) => {
     setCats(id);
     setFilter("")
@@ -42,7 +42,12 @@ function App () {
               <Categories 
                 items={resp} 
                 onChange={onChange}/>
-              <SearchBar func={onChangeSearch}/>
+              <SearchBar func={onChangeSearch} 
+                setTemp={setTemp} 
+                value={temp}
+                setCats={setCats}
+                setFilter={setFilter}
+              />
             </div> 
             <Merch items={merch}/>
         </main>
